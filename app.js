@@ -6,6 +6,7 @@ var passport = require('passport');
 var passportLocal = require('passport-local');
 var passportLocalMongoose = require('passport-local-mongoose');
 var methodOverride = require('method-override');
+var Campgrounds=require('./models/campgrounds');
 
 var app = express();
 mongoose.connect("mongodb://localhost/yelpcamp", { useNewUrlParser: true, useUnifiedTopology: true });
@@ -13,14 +14,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 app.set(methodOverride("_method"));
-
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-var Campgrounds = mongoose.model('Campgrounds', campgroundSchema);
 
 app.get("/", function (req, res) {
     res.render("landing");
