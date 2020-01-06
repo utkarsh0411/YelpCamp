@@ -1,5 +1,9 @@
 var express=require('express');
 var router=express.Router();
+var passport=require('passport');
+var Campgrounds=require('../models/campgrounds');
+var User=require('../models/user');
+var Comment=require('../models/comment');
 
 router.get("/login", function (req, res) {
     res.render("login/loginpage");
