@@ -51,5 +51,5 @@ app.listen(3000, function () {
     console.log("Server Listening...");
 });
 
-//"C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath="d:\WebDev\Projects\yelpcamp-db\data\db"
+
 
