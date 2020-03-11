@@ -1,0 +1,15 @@
+html,body{
+    height:100%;
+}
+
+img{
+    position: absolute;
+    height:100%;
+}
+
+#text{
+    position: absolute;
+    z-index: 100;
+    margin:0% auto;
+    color: white;
+}
