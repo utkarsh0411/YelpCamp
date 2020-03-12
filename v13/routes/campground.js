@@ -46,21 +46,9 @@ router.get("/new", isLoggedIn, function (req, res) {
 });
 
 router.post("/campground", function (req, res) {
-    geocoder.geocode(req.body.location, function (err, data) {
-        if (err || !data.length) {
-            console.log(err);
-            req.flash('error', 'Invalid address');
-            return res.redirect('back');
-        }
-        var lat = data[0].latitude;
-        var lng = data[0].longitude;
-        var location = data[0].formattedAddress;
         Campgrounds.create({
             name: req.body.name,
             price: req.body.price,
-            location: location,
-            lat: lat,
-            lng: lng,
             image: req.body.img,
             description: req.body.description
         }, function (err, newCampground) {
@@ -75,7 +63,6 @@ router.post("/campground", function (req, res) {
                 res.redirect("/campground");
             }
         });
-    });
 });
 
 router.get("/campground/:id", function (req, res) {
@@ -107,25 +94,13 @@ router.put("/campground/:id", (req, res) => {
             console.log(err);
         }
         else {
-            geocoder.geocode(req.body.location, function (err, data) {
-                if (err || !data.length) {
-                    req.flash('error', 'Invalid address');
-                    return res.redirect('back');
-                }
-                var lat = data[0].latitude;
-                var lng = data[0].longitude;
-                var location = data[0].formattedAddress;
                 foundCampground.name = req.body.name;
                 foundCampground.image = req.body.img;
                 foundCampground.price = req.body.price;
-                foundCampground.location = location;
-                foundCampground.lat = lat;
-                foundCampground.lng = lng;
                 foundCampground.description = req.body.description;
                 foundCampground.save();
                 req.flash("success", "Successfully updated the campground");
                 res.redirect("/campground/" + req.params.id);
-            });
         }
     });
 });

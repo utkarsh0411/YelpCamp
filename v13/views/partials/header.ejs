@@ -9,31 +9,36 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5">
         <a href="/" class="navbar-brand">YelpCamp</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active justify-self-start">
+                <a class="nav-link" href="/campground">Home</a>
+            </li>
+        </ul>
         <div class="navbar-collapse d-flex collapse justify-content-end">
             <ul class="navbar-nav">
                 <%if(!userInfo){%>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/signup">Sign Up</a>
-                    </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
                 <%}else{%>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
                 <%}%>
             </ul>
         </div>
     </nav>
     <div class="container">
         <%if(errorMessage && errorMessage.length>0){%>
-        <div class="alert alert-danger" role="alert">
-            <%=errorMessage%>
-        </div>
-        <%} else if(successMessage && successMessage.length>0){%>
-            <div class="alert alert-success" role="alert">
-                <%=successMessage%>
-            </div>
-        <%}%>
+                <div class="alert alert-danger" role="alert">
+                    <%=errorMessage%>
+                </div>
+                <%} else if(successMessage && successMessage.length>0){%>
+                <div class="alert alert-success" role="alert">
+                    <%=successMessage%>
+                </div>
+                <%}%>
     </div>
